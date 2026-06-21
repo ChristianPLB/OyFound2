@@ -1,0 +1,157 @@
+
+    .form-wrapper {
+    background-color: #cbcbcb;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+    }
+
+    /* Header Text */
+    .form-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+    }
+
+    .user-highlight {
+    color: #ff00ee;
+    }
+
+    .login-link {
+    color: #ff0088;
+    text-decoration: underline;
+    cursor: pointer;
+    }
+
+    /* Grid for Inputs */
+    .input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin: 30px 0;
+    }
+
+    /* Custom Select Styling */
+    .select-field {
+        appearance: none; /* Removes default browser arrow */
+        background-position: right 1rem center;
+        background-size: 1em;
+        cursor: pointer;
+    }
+
+    /* Style for the options list */
+    .select-field option {
+        background-color: #adadad00;
+        color: rgb(0, 0, 0);
+    }
+    /* Base Input Style */
+    .input-field {
+    background: transparent;
+    border: 4px solid rgb(0, 0, 0);
+    border-radius: 12px;
+    padding: 15px;
+    color: rgb(0, 0, 0);
+    outline: none;
+    transition: all 0.3s ease;
+    }
+
+    .input-field::placeholder {
+    color: rgba(0, 0, 0, 0.566);
+    }
+
+    /* Unique Active/Focus state from image */
+    .input-field.active {
+    background-color: #5d5f83;
+    border-color: #8b8eb7;
+    }
+
+    .input-field.active::placeholder {
+    color: white;
+    }
+
+    /* Divider with text */
+    .divider-container {
+    display: flex;
+    align-items: center;
+    margin: 30px 0;
+    }
+
+    .line {
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    }
+
+    .divider-text {
+    padding: 0 15px;
+    color: #003705;
+    font-size: 0.9rem;
+    }
+
+    /* Social Icons Section */
+    .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 40px;
+    }
+
+    .social-icon {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    }
+
+    /* Sign Up Button */
+    .signup-btn {
+    background-color: #ff00ccf9;
+    color: white;
+    border: none;
+    border-radius: 18px;
+    padding: 16px 60px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+
+    }
+
+    .signup-btn:hover {
+    background-color: #b300ff;
+    transform: translateY(-2px);
+    }
+
+    /* 2. Login Specific Layout */
+    .login-form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 400px;
+        margin: 40px auto;
+    }
+
+    .input-group {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 10px;
+    }
+
+    .forgot-password-link {
+        width: 100%;
+        text-align: right;
+        color: #000000;
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+        cursor: pointer;
+    }
+
+    .login-btn-wide {
+        padding: 12px 80px !important;
+    }

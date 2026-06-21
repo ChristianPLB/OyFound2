@@ -1,0 +1,18 @@
+  .text-start {
+        background-color: #ffffff;
+        width: 100%;
+        padding: 10px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: auto;
+        font-size: large;
+    }
+
+    .footer {
+        background-color: #ffffff;
+        text-align: center;
+        justify-content: center;
+        height: 0px;
+        height: fit-content;
+    }

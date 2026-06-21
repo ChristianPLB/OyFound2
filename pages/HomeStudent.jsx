@@ -6,23 +6,18 @@ function HomeStudent() {
     const [activeCategory, setActiveCategory] = useState('All');
     const [reports, setReports] = useState([]);
 
-    // Fetch reports from localStorage (where Admin saves them)
     useEffect(() => {
-        const savedReports = JSON.parse(localStorage.getItem('adminReports') || '[]');
-        setReports(savedReports);
-
         const q = query(collection(db, "reports"), orderBy("timestamp", "desc"));
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-        const items = [];
-        querySnapshot.forEach((doc) => {
-            items.push({ id: doc.id, ...doc.data() });
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            const items = [];
+            querySnapshot.forEach((doc) => {
+                items.push({ id: doc.id, ...doc.data() });
+            });
+            setReports(items);
         });
-        setReports(items);
-    });
-    return () => unsubscribe();
+        return () => unsubscribe();
     }, []);
 
-    // Filter reports based on the selected category
     const filteredReports = reports.filter(item => 
         activeCategory === 'All' || item.status === activeCategory
     );
@@ -49,17 +44,22 @@ function HomeStudent() {
 
             <div className="reports-grid">
                 {filteredReports.length > 0 ? (
-                    filteredReports.map((report, index) => (
-                        <div className="card item-card" key={index}>
-                            {/* Map Preview Area */}
-                            <div className="ratio ratio-1x1 map-container">
-                                <iframe
-                                    src={`https://maps.google.com/maps?q=${report.landmark}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-                                    style={{ border: 0 }}
-                                    allowFullScreen=""
-                                    loading="lazy"
-                                    title={`map-${index}`}
-                                ></iframe>
+                    filteredReports.map((report) => (
+                        <div className="card item-card" key={report.id}>
+                            {/* Image Preview Area instead of Map */}
+                            <div className="ratio ratio-1x1 image-container">
+                                {report.imageUrl ? (
+                                    <img 
+                                        src={report.imageUrl} 
+                                        alt={report.itemName}
+                                        className="item-image"
+                                        style={{ objectFit: 'cover', borderRadius: '8px 8px 0 0' }}
+                                    />
+                                ) : (
+                                    <div className="no-image-placeholder">
+                                        <span>No Image Available</span>
+                                    </div>
+                                )}
                             </div>
 
                             <div className="card-body">
@@ -72,14 +72,6 @@ function HomeStudent() {
                                     <strong>Date:</strong> {report.date}
                                 </p>
                                 <p className="description-preview">{report.description}</p>
-                                <a 
-                                    href={`https://www.google.com/maps/search/?api=1&query=${report.landmark}`} 
-                                    target="_blank" 
-                                    rel="noreferrer" 
-                                    className="btn btn-primary w-100"
-                                >
-                                    Open in Google Maps
-                                </a>
                             </div>
                         </div>
                     ))

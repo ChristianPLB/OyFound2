@@ -50,7 +50,7 @@ function Register({ setRole }) {
 
     return (
         <div className="register-container">
-            <div className="form-wrapper">
+            <div className="register-form">
                 <h1 className="form-title">Create account</h1>
                 <p>Already have an account? <Link to="/login" className="login-link">Login</Link></p>
 
@@ -60,8 +60,6 @@ function Register({ setRole }) {
                     <input type="text" name="lastName" className="input-field" placeholder="Lastname" 
                         required onChange={handleInputChange} />
                     
-                    <input type="text" name="phone" className="input-field" placeholder="Phone Number" 
-                        onChange={handleInputChange} />
                     
                     <select 
                         name="role"
@@ -73,7 +71,6 @@ function Register({ setRole }) {
                         <option value="" disabled>Select Role</option>
                         <option value="student">Student</option>
                         <option value="admin">Admin</option>
-                        <option value="guest">Guest</option>
                     </select>
                     
                     <input type="email" name="email" className="input-field" placeholder="Email" 

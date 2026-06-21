@@ -19,9 +19,6 @@ function NavAdmin({ setRole }) { // Receive setRole to log out
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav me-auto">
                         <li className="nav-item">
-                            <Link to="/admin" className="nav-link">Home</Link>
-                        </li>
-                        <li className="nav-item">
                             <Link to="/dashboard" className="nav-link">Dashboard</Link>
                         </li>
                         <li className="nav-item">
@@ -29,8 +26,8 @@ function NavAdmin({ setRole }) { // Receive setRole to log out
                         </li>
                     </ul>
                     {/* Logout Button */}
-                    <button 
-                        className="btn btn-outline-danger" 
+                    <button
+                        className="logout-btn" 
                         onClick={handleLogout}
                     >
                         Logout

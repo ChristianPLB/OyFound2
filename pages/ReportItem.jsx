@@ -1,12 +1,11 @@
 import { addDoc, collection } from "firebase/firestore";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useRef, useState } from 'react';
 import { MapContainer, Marker, TileLayer, useMapEvents } from 'react-leaflet';
-import { db, storage } from '../firebase';
+import { useNavigate } from 'react-router-dom';
+import { db } from '../firebase';
 
-// Fix for Leaflet Icons
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
     iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
@@ -17,6 +16,7 @@ L.Icon.Default.mergeOptions({
 const TOLEDO_BOUNDS = [[10.2500, 123.5000], [10.5000, 123.8000]];
 
 function ReportItem() {
+    const navigate = useNavigate();
     const [itemStatus, setItemStatus] = useState('Lost');
     const [selectedFile, setSelectedFile] = useState(null);
     const [isUploading, setIsUploading] = useState(false);
@@ -31,6 +31,35 @@ function ReportItem() {
     });
 
     const fileInputRef = useRef(null);
+
+    const uploadImageToCloudinary = async (file) => {
+        const apiKey = "396127833722297"; 
+        const cloudName = "dvfykqznw";
+        const uploadPreset = "Oyfound"; 
+
+        const body = new FormData();
+        body.append("file", file);
+        body.append("upload_preset", uploadPreset);
+        body.append("api_key", apiKey);
+
+        try {
+            const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+                method: "POST",
+                body: body,
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                return result.secure_url; 
+            } else {
+                console.error("Cloudinary Error:", result.error);
+                throw new Error(result.error.message || "Cloudinary Upload Failed");
+            }
+        } catch (error) {
+            throw new Error(error.message || "Connection to Cloudinary failed.");
+        }
+    };
 
     function LocationMarker() {
         useMapEvents({
@@ -62,19 +91,15 @@ function ReportItem() {
             return;
         }
 
-        setIsUploading(true); // START LOADING
+        setIsUploading(true); 
         
         try {
             let imageUrl = "";
 
-            // 1. Storage Upload
             if (selectedFile) {
-                const storageRef = ref(storage, `reports/${Date.now()}_${selectedFile.name}`);
-                const uploadResult = await uploadBytes(storageRef, selectedFile);
-                imageUrl = await getDownloadURL(uploadResult.ref);
+                imageUrl = await uploadImageToCloudinary(selectedFile);
             }
 
-            // 2. Firestore Upload
             await addDoc(collection(db, "reports"), {
                 ...formData,
                 status: itemStatus,
@@ -84,18 +109,13 @@ function ReportItem() {
             });
 
             alert("Report Published successfully!");
-            
-            // 3. Reset everything
-            setFormData({ itemName: '', landmark: '', date: '', time: '', description: '' });
-            setLocation(null);
-            setSelectedFile(null);
-            if (fileInputRef.current) fileInputRef.current.value = "";
+            navigate('/admin');
 
         } catch (error) {
             console.error("Submission Error:", error);
-            alert(`Error: ${error.message}. Check your Firebase permissions.`);
+            alert(`Error: ${error.message}`);
         } finally {
-            setIsUploading(false); // STOP LOADING regardless of success or fail
+            setIsUploading(false);
         }
     };
 
@@ -103,11 +123,10 @@ function ReportItem() {
         <div className="report-item-wrapper">
             <form className={`report-item-form ${isUploading ? 'form-faded' : ''}`} onSubmit={handleSubmit}>
                 
-                {/* Visual Feedback for Loading */}
                 {isUploading && (
                     <div className="loading-overlay">
                         <div className="spinner"></div>
-                        <p>Uploading to OyFound...</p>
+                        <p>Uploading report to OyFound...</p>
                     </div>
                 )}
 
@@ -122,7 +141,7 @@ function ReportItem() {
                     </div>
                 </div>
 
-                <div className="map-locator-container" style={{ height: '350px', marginBottom: '20px', position: 'relative' }}>
+                <div className="map-locator-container" style={{ height: '350px', marginBottom: '20px', position: 'relative'}}>
                     <MapContainer center={[10.3776, 123.6358]} zoom={13} maxBounds={TOLEDO_BOUNDS} style={{ height: '100%', width: '100%' }}>
                         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                         <LocationMarker />
@@ -135,8 +154,22 @@ function ReportItem() {
                         <input type="date" id="date" value={formData.date} onChange={handleInputChange} required disabled={isUploading}/>
                     </div>
                     <div className="status-selector">
-                        <button type="button" className={`toggle-btn ${itemStatus === 'Lost' ? 'selected' : ''}`} onClick={() => setItemStatus('Lost')} disabled={isUploading}>Lost</button>
-                        <button type="button" className={`toggle-btn ${itemStatus === 'Found' ? 'selected' : ''}`} onClick={() => setItemStatus('Found')} disabled={isUploading}>Found</button>
+                        <button 
+                            type="button" 
+                            className={`toggle-btn lost-btn ${itemStatus === 'Lost' ? 'selected' : ''}`} 
+                            onClick={() => setItemStatus('Lost')} 
+                            disabled={isUploading}
+                        >
+                            Lost
+                        </button>
+                        <button 
+                            type="button" 
+                            className={`toggle-btn found-btn ${itemStatus === 'Found' ? 'selected' : ''}`} 
+                            onClick={() => setItemStatus('Found')} 
+                            disabled={isUploading}
+                        >
+                            Found
+                        </button>
                     </div>
                 </div>
 

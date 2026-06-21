@@ -1,0 +1,78 @@
+/*HomeStudent*/
+    .student-home {
+        background-color: #ffffff;
+        min-height: 100vh;
+        padding: 40px;
+        color: rgb(0, 0, 0);
+    }
+
+    /* Category Header Styling */
+    .category-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 40px;
+    }
+
+    .category-header button {
+        background: none;
+        border: none;
+        color: #4b5563; /* Muted color for inactive */
+        cursor: pointer;
+        font-size: 2rem;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    .category-header button.active {
+        color: rgb(204, 0, 255); /* Bright white for active */
+    }
+
+    .divider {
+        color: #6a246d;
+        font-size: 2.5rem;
+    }
+
+    /* Grid and Cards */
+    .reports-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .item-card {
+        background-color: #000000cd !important;
+        border: 1px solid #ffffff !important;
+        border-radius: 15px !important;
+        overflow: hidden;
+        color: rgb(255, 255, 255) !important;
+    }
+
+    .map-container {
+        filter: grayscale(0.5) contrast(1.2); /* Stylized map look */
+    }
+
+    .card-badge {
+        display: inline-block;
+        padding: 2px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .card-badge[data-status="Lost"] { background-color: #ef4444; }
+    .card-badge[data-status="Found"] { background-color: #10b981; }
+
+    .description-preview {
+        font-size: 0.9rem;
+        color: #94a3b8;
+        height: 3.6em;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }

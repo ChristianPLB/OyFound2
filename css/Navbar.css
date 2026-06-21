@@ -1,0 +1,32 @@
+.container-fluid {
+    padding: 10px 20px;
+    font-weight: bolder;
+    font-style: normal;
+    font-size: larger;
+    }
+
+    .nav-link {
+        color: #000000;
+    }
+
+    .nav-link:hover{
+        color: #ea00ff;
+    }
+
+    .logout-btn{
+        padding: 8px 20px;
+        background-color: white;
+        color: #d92d20;
+        border: 1px solid #ff0000;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .logout-btn:hover{
+        background-color: #c00d00;
+        border-color: #d92d20;
+        color: white;
+    }
+    

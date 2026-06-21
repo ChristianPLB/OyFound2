@@ -1,70 +1,89 @@
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useState } from 'react';
-import { db } from '../firebase'; // Import the db export from your config
+import { db } from '../firebase';
 
 function Contact() {
     const [formData, setFormData] = useState({
-        fullName: '', phone: '', email: '', address: '', message: ''
+        fullName: '', company: '', phone: '', email: '', address: '', message: ''
     });
     const [isSending, setIsSending] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSending(true);
-        
         try {
-            // 1. Save directly to Firebase Firestore
             await addDoc(collection(db, "messages"), { 
                 ...formData, 
-                timestamp: serverTimestamp() // Better than local time for sorting
+                timestamp: serverTimestamp() 
             });
-            
-            // 2. Clear local storage for adminMessages if you want to transition fully to cloud
-            localStorage.removeItem('adminMessages');
-            
-            alert("Message sent to Admin via Firebase!");
-            setFormData({ fullName: '', phone: '', email: '', address: '', message: '' }); 
+            alert("Message sent!");
+            setFormData({ fullName: '', company: '', phone: '', email: '', address: '', message: '' }); 
         } catch (error) {
-            console.error("Error sending message: ", error);
-            alert("Failed to send message. Check your connection.");
+            console.error("Error: ", error);
         } finally {
             setIsSending(false);
         }
     };
 
     return (
-        <div className="contact-container">
-            <div className="form-card">
-                <form className="contact-form" onSubmit={handleSubmit}>
-                    <div className="form-row">
-                        <div className="form-group">
-                            <label>Full Name</label>
-                            <input type="text" value={formData.fullName} required
-                                onChange={(e) => setFormData({...formData, fullName: e.target.value})} />
-                        </div>
-                        <div className="form-group">
-                            <label>Phone No.</label>
-                            <input type="text" value={formData.phone} required
-                                onChange={(e) => setFormData({...formData, phone: e.target.value})} />
-                        </div>
-                        <div className="form-group">
-                            <label>Email Address</label>
-                            <input type="text" value={formData.email} required
-                                onChange={(e) => setFormData({...formData, email: e.target.value})} />
-                        </div>
+        <div className="contact-page">
+            <div className="contact-container">
+                {/* Left Side: Info */}
+                <div className="contact-info">
+                    <h1>Contact Us</h1>
+                    <p>For reports, inquiries, or assistance with lost and found items, 
+feel free to contact us. We’re happy to help..</p>
+                    <div className="contact-details">
+                        <p>📧 info@oyfound.com</p>
+                        <p>📞 Support: (+63) 0912 107 7309</p>
                     </div>
-                    {/* Add Email/Address fields here following the same pattern */}
-                    <div className="form-group">
-                        <label>Message</label>
-                        <textarea rows="5" value={formData.message} required
-                            onChange={(e) => setFormData({...formData, message: e.target.value})}></textarea>
+                </div>
+
+                {/* Right Side: Form Card */}
+                <div className="form-card">
+                    <div className="form-header">
+                        <h2>We'd love to hear from you!</h2>
+                        <p>Let's get in touch</p>
                     </div>
-                    <div className="form-footer">
+                    <form className="contact-form" onSubmit={handleSubmit}>
+                        <div className="form-row">
+                            <div className="form-group">
+                                <label>Full Name</label>
+                                <input type="text" placeholder="Full Name" value={formData.fullName} required
+                                    onChange={(e) => setFormData({...formData, fullName: e.target.value})} />
+                            </div>
+                        </div>
+
+                        <div className="form-row">
+                            <div className="form-group">
+                                <label>Email</label>
+                                <input type="email" placeholder="" value={formData.email} required
+                                    onChange={(e) => setFormData({...formData, email: e.target.value})} />
+                            </div>
+                            <div className="form-group">
+                                <label>Phone number</label>
+                                <input type="text" placeholder="+63 0000-000-0000" value={formData.phone}
+                                    onChange={(e) => setFormData({...formData, phone: e.target.value})} />
+                            </div>
+                        </div>
+
+                        <div className="form-group">
+                            <label>Address</label>
+                            <input type="text" value={formData.address}
+                                onChange={(e) => setFormData({...formData, address: e.target.value})} />
+                        </div>
+
+                        <div className="form-group">
+                            <label>Your Message</label>
+                            <textarea rows="4" placeholder="Type your message here" value={formData.message} required
+                                onChange={(e) => setFormData({...formData, message: e.target.value})}></textarea>
+                        </div>
+
                         <button type="submit" className="submit-button" disabled={isSending}>
-                            {isSending ? "Sending..." : "Submit"}
+                            {isSending ? "Sending..." : "Send Message"}
                         </button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     );

@@ -1,0 +1,16 @@
+ .register-container {
+    background-color: #ffffffc4;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    }
+
+    .register-form {
+        padding: 30px;
+        background-color: #bcbcbc7d;
+        height: 60ch;
+        border-radius: 80px 20.5px 0px;
+    }

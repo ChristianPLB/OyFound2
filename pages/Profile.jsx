@@ -1,76 +1,123 @@
-import { onAuthStateChanged } from "firebase/auth";
-import { useEffect, useRef, useState } from 'react';
-import { auth } from '../firebase'; // Import auth from your config
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { auth, db } from '../firebase';
 
-function Profile() {
-    // 1. Manage State for the logged-in user
-    const [profileName, setProfileName] = useState('Loading...');
-    const [profileImg, setProfileImg] = useState('https://via.placeholder.com/100');
-    const fileInputRef = useRef(null);
+function Profile({ setRole }) { // Receive setRole here
+    const navigate = useNavigate();
+    const [userData, setUserData] = useState({
+        fullName: 'Loading...',
+        email: '',
+        role: 'Team Member', 
+        phone: '',
+        location: '',
+        photoURL: 'https://via.placeholder.com/100'
+    });
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Listen for the specific user who logged/signed in
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
-                // Dynamically set name based on Firebase Auth record
-                setProfileName(user.displayName || user.email.split('@')[0]);
-                if (user.photoURL) setProfileImg(user.photoURL);
+                const basicInfo = {
+                    fullName: user.displayName || "User",
+                    email: user.email,
+                    photoURL: user.photoURL || null,
+                };
+
+                try {
+                    const userDocRef = doc(db, "users", user.uid);
+                    const userDocSnap = await getDoc(userDocRef);
+
+                    if (userDocSnap.exists()) {
+                        const data = userDocSnap.data();
+                        setUserData({
+                            ...basicInfo,
+                            fullName: data.fullName || basicInfo.fullName,
+                            role: data.role || 'Team Member',
+                            phone: data.phone || 'Not provided',
+                        });
+                    } else {
+                        setUserData(prev => ({ ...prev, ...basicInfo }));
+                    }
+                } catch (error) {
+                    console.error("Error fetching user data:", error);
+                }
             } else {
-                setProfileName('Guest User');
+                setRole(null); // Safety check: if no user, clear role
+                navigate('/'); 
             }
+            setLoading(false);
         });
-        return () => unsubscribe(); 
-    }, []);
 
-    // 2. Picture Control Handlers
-    const handleImageClick = () => {
-        fileInputRef.current.click();
-    };
+        return () => unsubscribe();
+    }, [navigate, setRole]);
 
-    const handleImageChange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            const imageUrl = URL.createObjectURL(file);
-            setProfileImg(imageUrl);
-            // In the future, you can add uploadBytes(storageRef, file) here to save to Firebase
+    // Handle Logout
+    const handleLogout = async () => {
+        try {
+            await signOut(auth); // Sign out from Firebase
+            setRole(null);       // Reset the App.js state (fixes the Navbar)
+            localStorage.removeItem('userRole'); // Clear persistent storage
+            navigate('/');       // Redirect to home
+        } catch (error) {
+            console.error("Logout Error:", error);
         }
     };
 
-    const handleDeletePicture = () => {
-        setProfileImg('https://via.placeholder.com/100');
-    };
+    if (loading) return <div className="loading-spinner">Loading Profile...</div>;
 
     return (
-        <div className="profile-settings-container">
-            <div className="profile-section">
-                <label className="section-label">Profile picture</label>
-                <div className="picture-controls">
-                    <div className="profile-avatar">
-                        <img src={profileImg} alt="Profile" />
+        <div className="profile-container">
+            <h2 className="main-title">My Profile</h2>
+
+            <div className="profile-card header-card">
+                <div className="header-left">
+                    <div className="avatar-wrapper">
+                    {userData.photoURL ? (
+                        <img src={userData.photoURL} alt="Profile" className="profile-avatar" />
+                    ) : (
+                        <div className="profile-icon-fallback">
+                            {userData.fullName.charAt(0).toUpperCase()}
+                        </div>
+                    )}
+                </div>
+                    <div className="user-meta">
+                        <h3 className="user-name">{userData.fullName}</h3>
+                        <p className="user-role">{userData.role}</p>
+                        <p className="user-location">{userData.location}</p>
                     </div>
-                    <div className="button-group">
-                        <button className="btn-change" onClick={handleImageClick}>Change picture</button>
-                        <button className="btn-delete" onClick={handleDeletePicture}>Delete picture</button>
-                    </div>
-                    <input 
-                        type="file" 
-                        ref={fileInputRef} 
-                        onChange={handleImageChange} 
-                        accept="image/*" 
-                        style={{ display: 'none' }} 
-                    />
+                </div>
+                <div className="header-actions">
+                    {/* Logout Button inside the Profile Card */}
+                    <button className="btn-logout-danger" onClick={handleLogout}>
+                        Logout
+                    </button>
                 </div>
             </div>
 
-            <div className="profile-section">
-                <label className="section-label">Profile name</label>
-                <div className="input-wrapper">
-                    <input 
-                        type="text" 
-                        className="name-input" 
-                        value={profileName} 
-                        readOnly // Ensures only the authenticated name is shown
-                    />
+            <div className="profile-card info-card">
+                <div className="card-header">
+                    <h3>Personal Information</h3>
+                </div>
+
+                <div className="info-grid">
+                    <div className="info-group">
+                        <label>First Name</label>
+                        <p>{userData.fullName.split(' ')[0]}</p>
+                    </div>
+                    <div className="info-group">
+                        <label>Last Name</label>
+                        <p>{userData.fullName.split(' ').slice(1).join(' ') || '—'}</p>
+                    </div>
+                    <div className="info-group">
+                        <label>Email address</label>
+                        <p>{userData.email}</p>
+                    </div>
+                    <div className="info-group">
+                        <label>Phone</label>
+                        <p>{userData.phone}</p>
+                    </div>
                 </div>
             </div>
         </div>
