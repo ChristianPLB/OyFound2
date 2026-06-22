@@ -1,0 +1,1158 @@
+* {
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+.auth-page {
+    position: relative;
+
+    min-height: 100vh;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px;
+
+    overflow: hidden;
+
+    font-family: "Poppins", sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1b263b 0%,
+            #415a77 48%,
+            #778da9 100%
+        );
+}
+
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.auth-background {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+
+.auth-orb {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(8px);
+
+    opacity: 0.25;
+}
+
+
+.auth-orb-one {
+    width: 700px;
+    height: 700px;
+
+    top: -500px;
+    left: -300px;
+
+    background: #e0e1dd;
+}
+
+
+.auth-orb-two {
+    width: 900px;
+    height: 900px;
+
+    right: -500px;
+    bottom: -600px;
+
+    background: #778da9;
+}
+
+
+.auth-orb-three {
+    width: 500px;
+    height: 500px;
+
+    top: 45%;
+    left: 45%;
+
+    background: #415a77;
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.auth-brand {
+    position: absolute;
+
+    top: 28px;
+    left: 32px;
+
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: #fff;
+
+    font-size: 23px;
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+}
+
+
+.brand-dot {
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: #e0e1dd;
+
+    box-shadow:
+        0 0 0 5px rgba(224, 225, 221, 0.15);
+}
+
+
+/* =========================================
+   HOME WELCOME CARD
+========================================= */
+
+.welcome-card {
+    position: relative;
+
+    z-index: 2;
+
+    width: 620px;
+    max-width: 100%;
+
+    min-height: 430px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255, 255, 255, 0.96);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.30);
+
+    animation: authAppear 0.6s ease;
+}
+
+
+.welcome-card-content {
+    width: 100%;
+    max-width: 470px;
+
+    padding: 60px 45px;
+
+    text-align: center;
+}
+
+
+.welcome-eyebrow {
+    margin-bottom: 12px;
+
+    color: #778da9;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+
+.welcome-card h1 {
+    margin: 0 0 18px;
+
+    color: #1b263b;
+
+    font-size: 42px;
+    font-weight: 800;
+}
+
+
+.welcome-card p {
+    margin: 0 auto 35px;
+
+    max-width: 400px;
+
+    color: #415a77;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+.welcome-actions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 14px;
+}
+
+
+/* =========================================
+   AUTH CARD
+========================================= */
+
+.auth-card {
+    position: relative;
+
+    z-index: 2;
+
+    width: 900px;
+    max-width: 100%;
+
+    min-height: 560px;
+
+    display: flex;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: #fff;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.32);
+
+    animation: authAppear 0.6s ease;
+}
+
+
+.login-card {
+    flex-direction: row;
+}
+
+
+.register-card {
+    flex-direction: row;
+}
+
+
+/* =========================================
+   WELCOME PANEL
+========================================= */
+
+.welcome-panel {
+    width: 42%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 45px;
+
+    text-align: center;
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1b263b,
+            #415a77,
+            #778da9
+        );
+}
+
+
+.welcome-panel-content {
+    width: 100%;
+    max-width: 290px;
+}
+
+
+.welcome-panel h1 {
+    margin: 0 0 18px;
+
+    color: #fff;
+
+    font-size: 34px;
+    font-weight: 800;
+}
+
+
+.welcome-panel p {
+    color: rgba(255, 255, 255, 0.9);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+.welcome-small-text {
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+
+.welcome-divider {
+    width: 45px;
+    height: 2px;
+
+    margin: 25px auto;
+
+    background: rgba(255, 255, 255, 0.55);
+}
+
+
+/* =========================================
+   FORM PANEL
+========================================= */
+
+.form-panel {
+    width: 58%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff;
+}
+
+
+.form-wrapper {
+    width: 100%;
+    max-width: 420px;
+
+    padding: 35px;
+}
+
+
+.form-wrapper h2 {
+    margin: 0;
+
+    color: #1b263b;
+
+    text-align: center;
+
+    font-size: 29px;
+    font-weight: 800;
+}
+
+
+.form-subtitle {
+    margin: 8px 0 25px;
+
+    color: #415a77;
+
+    text-align: center;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.form-input-group {
+    margin-bottom: 17px;
+}
+
+
+.form-input-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #1b263b;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.form-input-group input,
+.register-grid input,
+.register-grid select,
+.birthdate-grid select {
+    width: 100%;
+
+    height: 46px;
+
+    padding: 0 14px;
+
+    border: 1px solid #d7dce2;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    background: #fff;
+
+    color: #1b263b;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.form-input-group input:focus,
+.register-grid input:focus,
+.register-grid select:focus,
+.birthdate-grid select:focus {
+    border-color: #778da9;
+
+    box-shadow:
+        0 0 0 3px rgba(119, 141, 169, 0.15);
+}
+
+
+.form-input-group input::placeholder,
+.register-grid input::placeholder {
+    color: #8995a5;
+}
+
+
+/* =========================================
+   FORGOT PASSWORD
+========================================= */
+
+.forgot-row {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: -5px;
+    margin-bottom: 17px;
+}
+
+
+.forgot-row button {
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #415a77;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+
+.forgot-row button:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   PRIMARY BUTTON
+========================================= */
+
+.primary-form-button,
+.primary-auth-button {
+    width: 100%;
+
+    min-height: 48px;
+
+    padding: 0 25px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1b263b,
+            #415a77
+        );
+
+    color: #fff;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.primary-form-button:hover,
+.primary-auth-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(27, 38, 59, 0.25);
+}
+
+
+.primary-form-button:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================
+   WELCOME BUTTON
+========================================= */
+
+.outline-auth-button {
+    min-width: 145px;
+
+    height: 45px;
+
+    padding: 0 25px;
+
+    border: 1.5px solid #fff;
+
+    border-radius: 25px;
+
+    background: transparent;
+
+    color: #fff;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+
+.outline-auth-button:hover {
+    background: #fff;
+
+    color: #1b263b;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   SECONDARY HOME BUTTON
+========================================= */
+
+.secondary-auth-button {
+    width: 150px;
+
+    height: 48px;
+
+    border: 1.5px solid #415a77;
+
+    border-radius: 25px;
+
+    background: transparent;
+
+    color: #1b263b;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+
+.secondary-auth-button:hover {
+    background: #415a77;
+
+    color: #fff;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   GOOGLE
+========================================= */
+
+.or-divider {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 20px 0;
+}
+
+
+.or-divider span {
+    flex: 1;
+
+    height: 1px;
+
+    background: #e1e4e8;
+}
+
+
+.or-divider p {
+    margin: 0;
+
+    color: #8995a5;
+
+    font-size: 11px;
+}
+
+
+.google-button {
+    width: 100%;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    border: 1px solid #d9dde3;
+
+    border-radius: 9px;
+
+    background: #fff;
+
+    color: #1b263b;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.google-button:hover {
+    background: #f7f8fa;
+
+    border-color: #778da9;
+}
+
+
+.google-button img {
+    width: 21px;
+    height: 21px;
+
+    object-fit: contain;
+}
+
+
+.google-button:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   LOGIN / REGISTER SWITCH
+========================================= */
+
+.switch-auth {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    margin-top: 17px;
+
+    color: #415a77;
+
+    font-size: 12px;
+}
+
+
+.switch-auth button,
+.inline-auth-link {
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #1b263b;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: inherit;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.switch-auth button:hover,
+.inline-auth-link:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   ERROR / SUCCESS
+========================================= */
+
+.auth-error {
+    margin-bottom: 15px;
+
+    padding: 10px 12px;
+
+    border-radius: 8px;
+
+    background: #fff1f1;
+
+    color: #c0392b;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+.auth-success {
+    margin-bottom: 15px;
+
+    padding: 10px 12px;
+
+    border-radius: 8px;
+
+    background: #eefaf2;
+
+    color: #287a43;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   REGISTER
+========================================= */
+
+.register-form-panel {
+    width: 62%;
+}
+
+
+.register-form-panel + .welcome-panel {
+    width: 38%;
+}
+
+
+.register-wrapper {
+    max-width: 520px;
+
+    padding: 28px 32px;
+}
+
+
+.register-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 11px;
+}
+
+
+.register-grid > div {
+    min-width: 0;
+}
+
+
+.register-grid .full-width {
+    grid-column: 1 / -1;
+}
+
+
+.register-grid input,
+.register-grid select {
+    height: 43px;
+
+    font-size: 12px;
+}
+
+
+.register-submit {
+    margin-top: 17px;
+}
+
+
+.birthdate-field {
+    grid-column: 1 / -1;
+}
+
+
+.birthdate-field label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #1b263b;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+.birthdate-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.5fr
+        1fr
+        1fr;
+
+    gap: 8px;
+}
+
+
+.birthdate-grid select {
+    height: 43px;
+}
+
+
+/* =========================================
+   VERIFICATION
+========================================= */
+
+.verification-card {
+    width: 560px;
+
+    min-height: 430px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.verification-content {
+    max-width: 420px;
+
+    padding: 50px;
+
+    text-align: center;
+}
+
+
+.verification-icon {
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 20px;
+
+    border-radius: 50%;
+
+    background: #415a77;
+
+    color: #fff;
+
+    font-size: 30px;
+    font-weight: 700;
+}
+
+
+.verification-content h1 {
+    margin-bottom: 12px;
+
+    color: #1b263b;
+
+    font-size: 28px;
+}
+
+
+.verification-content p {
+    color: #415a77;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+.verification-content strong {
+    display: block;
+
+    margin: 8px 0;
+
+    color: #1b263b;
+
+    word-break: break-word;
+}
+
+
+.verification-content .primary-auth-button {
+    width: 190px;
+
+    margin-top: 20px;
+}
+
+
+/* =========================================
+   ANIMATION
+========================================= */
+
+@keyframes authAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .auth-page {
+        padding: 90px 20px 30px;
+    }
+
+
+    .auth-card {
+        width: 760px;
+    }
+
+
+    .welcome-panel {
+        padding: 30px;
+    }
+
+
+    .welcome-panel h1 {
+        font-size: 29px;
+    }
+
+
+    .register-wrapper {
+        padding: 25px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .auth-page {
+        padding:
+            90px
+            15px
+            30px;
+    }
+
+
+    .auth-brand {
+        top: 25px;
+        left: 25px;
+
+        font-size: 21px;
+    }
+
+
+    .welcome-card {
+        width: 100%;
+    }
+
+
+    .welcome-card-content {
+        padding: 45px 25px;
+    }
+
+
+    .welcome-card h1 {
+        font-size: 32px;
+    }
+
+
+    .welcome-actions {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+
+    .auth-card {
+        width: 100%;
+
+        flex-direction: column;
+
+        min-height: auto;
+    }
+
+
+    .login-card,
+    .register-card {
+        flex-direction: column;
+    }
+
+
+    .welcome-panel,
+    .form-panel,
+    .register-form-panel,
+    .register-form-panel + .welcome-panel {
+        width: 100%;
+    }
+
+
+    .form-panel {
+        order: 1;
+    }
+
+
+    .welcome-panel {
+        order: 2;
+
+        min-height: 270px;
+
+        padding: 35px 25px;
+    }
+
+
+    .register-form-panel {
+        order: 1;
+    }
+
+
+    .register-form-panel + .welcome-panel {
+        order: 2;
+    }
+
+
+    .form-wrapper,
+    .register-wrapper {
+        padding: 30px 20px;
+    }
+
+
+    .register-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .register-grid .full-width,
+    .birthdate-field {
+        grid-column: auto;
+    }
+
+
+    .birthdate-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 450px) {
+
+    .auth-page {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+
+    .auth-card {
+        border-radius: 15px;
+    }
+
+
+    .welcome-panel h1 {
+        font-size: 26px;
+    }
+
+
+    .form-wrapper,
+    .register-wrapper {
+        padding:
+            25px
+            15px;
+    }
+
+
+    .welcome-card h1 {
+        font-size: 28px;
+    }
+}

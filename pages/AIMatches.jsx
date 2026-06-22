@@ -1,6 +1,6 @@
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import '../css/AIMatches.css';
 import { db } from '../firebase';
 
 function AIMatches() {
@@ -47,11 +47,6 @@ function AIMatches() {
 
     return (
         <div className="home-admin-container">
-            <aside className="admin-sidebar">
-                <div className="report-section">
-                    <Link to="/admin" className="report-btn-link">← Dashboard</Link>
-                </div>
-            </aside>
 
             <main className="admin-main-content">
                 <header className="content-header">

@@ -1,323 +1,317 @@
- .report-item-wrapper {
-        min-height: 100vh;
-        background-color: #ffffff; /* Deep navy background from UI image */
-        color: rgb(255, 255, 255);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        font-family: sans-serif;
-    }
+/* ==========================================
+   PAGE CANVAS & GRADIENT BACKGROUND
+   ========================================== */
+.report-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 24px;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, #415A77 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #778DA9 0%, transparent 35%),
+        linear-gradient(135deg, #1B263B, #415A77, #778DA9);
+    color: #1e293b;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
 
-    /* Base form layout. */
-    .report-item-form {
-        max-width: 1200px;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-    }
+.report-item-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
 
-    .reports-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 20px;
-        padding: 10px;
-    }
+/* ==========================================
+   THE FLOATING PANEL
+   ========================================== */
+.report-item-box {
+    background-color: rgba(255, 255, 255, 0.85); 
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 28px;
+    box-shadow: 0 12px 30px rgba(119, 141, 169, 0.15);
+    width: 100%;
+    max-width: 900px; 
+    padding: 40px;
+    box-sizing: border-box;
+}
 
-    .report-card {
-        background: white;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        transition: transform 0.2s;
-    }
+.report-item-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    transition: opacity 0.3s ease;
+}
 
-    .report-image-container {
-        width: 100%;
-        height: 180px;
-        background: #f0f0f0;
-    }
+.report-item-form.form-faded {
+    opacity: 0.5;
+    pointer-events: none;
+}
 
-    .report-img-preview {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* This prevents the image from looking squashed */
-    }
+/* Header Text Styling */
+.form-title {
+    margin-top: 0;
+    margin-bottom: 4px;
+    font-size: 2.2rem;
+    color: #334155;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
 
-    .report-details {
-        padding: 15px;
-    }
+.form-subtitle {
+    text-align: center;
+    font-size: 0.95rem;
+}
 
-    .status-badge {
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 0.8rem;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
+/* ==========================================
+   INPUTS, LABELS & DROPDOWNS
+   ========================================== */
+.form-section-text {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
 
-    .status-badge.lost { background: #ffebee; color: #c62828; }
-    .status-badge.found { background: #e8f5e9; color: #2e7d32; }
+.input-block, .input-block-small {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
 
-    /* Generic styling for all input blocks. */
-    .input-block, .input-block-small {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        
-    }
+.input-block label, .input-block-small label {
+    font-weight: 600;
+    color: #475569;
+    font-size: 0.9rem;
+    padding-left: 6px;
+    letter-spacing: 0.2px;
+}
 
-    /* Label styling to match the light-colored font in the UI. */
-    .input-block label, .input-block-small label {
-        font-weight: 600;
-        color: #000000;
-        
-    }
+/* Base input field, Date input, & Select dropdown styling */
+.input-block input[type="text"],
+.input-block input[type="file"],
+.input-block select,
+.input-block-small input,
+.description-box textarea {
+    background-color: rgba(241, 245, 249, 0.7);
+    border: 1px solid rgba(203, 213, 225, 0.8);
+    border-radius: 16px;
+    padding: 14px 20px;
+    color: #1e293b;
+    outline: none;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
 
-    /* Text and Meta Input Styling */
-    .full-width-text,
-    .input-block-small input {
-        background-color: #ffffff; /* Slightly lighter navy for input fields */
-        border: 2px solid #2d3748;
-        border-radius: 20px;
-        padding: 12px 20px;
-        color: rgb(0, 0, 0);
-        outline: none;
-        font-size: 1rem;
-    }
+/* Toledo Barangay dropdown custom arrow */
+.input-block select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22293%22%20height%3D%22293%22%3E%3Cpath%20fill%3D%22%23475569%22%20d%3D%22M236%20129l-89%2089-89-89h178z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 18px center;
+    background-size: 12px;
+    cursor: pointer;
+}
 
+/* Focus state with soft blue glow */
+.input-block input[type="text"]:focus,
+.input-block select:focus,
+.input-block-small input:focus,
+.description-box textarea:focus {
+    background-color: #ffffff;
+    border-color: #778da9;
+    box-shadow: 0 0 0 4px rgba(119, 141, 169, 0.15);
+}
 
-    .input-block-small input {
-        padding: 12px;
-    }
+.description-box textarea {
+    resize: vertical;
+    min-height: 120px;
+}
 
-    .full-width-text:focus,
-    .input-block-small input:focus,
-    textarea:focus {
-        border-color: #4c51bf;
-    }
+/* ==========================================
+   MAP LOCATOR CONTAINER
+   ========================================== */
+.map-locator-container {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(203, 213, 225, 0.8);
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
+    z-index: 1;
+}
 
-    /* Special Landmark styling. */
-    .input-block.with-action {
-        position: relative;
-    }
+/* ==========================================
+   STATUS SELECTORS & BUTTONS
+   ========================================== */
+.inline-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+}
 
-    .action-hint {
-        position: absolute;
-        right: 20px;
-        top: 52px;
-        font-size: 0.8rem;
-        color: #000000;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
+.status-selector {
+    display: flex;
+    flex-direction: column;
+}
 
-    .action-hint .dot {
-        height: 8px;
-        width: 8px;
-        background-color: #6f6f6f;
-        border-radius: 50%;
-    }
+.status-selector .toggle-btn {
+    padding: 12px 28px;
+    border: 1px solid rgba(203, 213, 225, 0.8);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    background-color: rgba(241, 245, 249, 0.7);
+    color: #64748b;
+    transition: all 0.2s ease;
+}
 
-    /* Meta Section and Status Toggle Styling */
-    .inline-controls {
-        display: flex;
-        align-items: flex-end;
-        gap: 20px;
-    }
+.status-selector .lost-btn {
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    border-right: none;
+}
 
-    .status-selector {
-        display: flex;
-        border: 2px solid #cbd5e1;
-        border-radius: 10px;
-        overflow: hidden;
-    }
+.status-selector .found-btn {
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
 
-    .toggle-btn {
-        padding: 12px 30px;
-        border: none;
-        font-weight: bold;
-        font-size: 1rem;
-        cursor: pointer;
-        background-color: #e2e8f0; /* Default (Found) color in image */
-        color: #2d3748;
-        transition: all 0.3s;
-    }
+.toggle-btn.selected {
+    background-color: #415a77 !important;
+    color: #ffffff !important;
+    border-color: #415a77 !important;
+}
 
-    /* "Lost" active button matches the bright blue from the image. */
-    .toggle-btn.lost-btn.selected {
-        background-color: #22d3ee;
-        color: white;
-    }
+.toggle-btn:hover:not(.selected) {
+    background-color: rgba(226, 232, 240, 0.9);
+    color: #1e293b;
+}
 
-    /* "Found" active button. */
-    .toggle-btn.found-btn.selected {
-        background-color: #22d3ee;
-        color: #2d3748;
-    }
+/* ==========================================
+   GRID FOR DESCRIPTION & IMAGE UPLOAD
+   ========================================== */
+.flex-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
 
-    /* Description and File Upload Layout. */
+@media (max-width: 768px) {
     .flex-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
+        grid-template-columns: 1fr;
     }
-
-    .description-box textarea {
-        background-color: #ffffff; /* Distinct box background from UI image */
-        border: 2px solid #2d3748;
-        border-radius: 12px;
-        padding: 15px;
-        color: rgb(0, 0, 0);
-        outline: none;
-        resize: none;
-    }
-
-    /* Styling for the large upload area with the cloud icon. */
-    .upload-container {
-        background-color: #cbd5e1;
-        border: 2px dashed #42434498;
-        border-radius: 12px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-    }
-
-    .upload-target {
-        text-align: center;
-        color: #2d3748;
-    }
-
-    .icon-cloud {
-        font-size: 2rem;
-        margin-bottom: 10px;
-        display: block;
-    }
-
-    /* Submit Button styling: large, red, and with rounded corners. */
-    .form-action-area {
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    .final-report-btn {
-        background-color: #e53e3e; /* Bright red from the image */
-        color: white;
-        padding: 15px 50px;
-        border: none;
-        border-radius: 12px;
-        font-weight: bold;
-        font-size: 1.1rem;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    .final-report-btn:hover {
-        background-color: #c53030;
-    }
-
-    .name-input {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #e2e8f0;
-        border-radius: 6px;
-        background-color: #f7fafc;
-        font-size: 1rem;
-        color: #2d3748;
-        outline: none;
-    }
-
-    .name-input:focus {
-        border-color: #3182ce;
-        box-shadow: 0 0 0 1px #3182ce;
-    }
-
-    .report-item-wrapper {
-        position: relative; /* Essential for the overlay to anchor here */
-    }
-
-    .loading-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
-        display: flex;
+    .inline-controls {
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000; /* Ensure it stays above the map */
-        border-radius: 8px;
+        align-items: stretch;
     }
+}
 
-    /* Simple CSS Spinner */
-    .spinner {
-        width: 40px;
-        height: 40px;
-        border: 4px solid #f3f3f3;
-        border-top: 4px solid #3498db;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-    }
+/* ==========================================
+   CARD PANELS (For Listings/Grids)
+   ========================================== */
+.reports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    padding: 12px;
+}
 
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
+.report-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(148, 163, 184, 0.12);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
 
-    .form-faded {
-        opacity: 0.5;
-        pointer-events: none; /* Prevents clicking while loading */
-    }
+.report-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(119, 141, 169, 0.2);
+}
 
-    .card-header-flex {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 10px;
-    }
+.report-image-container {
+    width: 100%;
+    height: 190px;
+    background: #e2e8f0;
+}
 
-    .claimed-action-btn {
-        background-color: #4CAF50; /* Green */
-        color: white;
-        border: none;
-        padding: 5px 12px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 0.8rem;
-        font-weight: bold;
-        transition: background 0.3s ease;
-    }
+.report-img-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-    .claimed-action-btn:hover {
-        background-color: #388E3C;
-    }
+.report-details {
+    padding: 20px;
+}
 
-    .view-claimed-btn {
-        margin-top: 10px;
-        width: 100%;
-        padding: 10px;
-        background: #555;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+/* ==========================================
+   LOADING OVERLAY & SPINNER
+   ========================================== */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 28px;
+    z-index: 10;
+}
 
-    .convo-avatar, .header-avatar, .msg-avatar {
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        object-fit: cover;
-        background-color: #e2e8f0; /* Fallback color */
-        border: 1px solid #ddd;
-    }
+.spinner {
+    width: 44px;
+    height: 44px;
+    border: 4px solid rgba(119, 141, 169, 0.2);
+    border-left-color: #415a77;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+    margin-bottom: 12px;
+}
 
-    .convo-avatar-wrapper {
-        position: relative;
-        margin-right: 12px;
-    }
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ==========================================
+   SUBMIT BUTTON
+   ========================================== */
+.final-report-btn {
+    background: linear-gradient(135deg, #e05a47, #c93b2b);
+    color: white;
+    padding: 16px 48px;
+    border: none;
+    border-radius: 18px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(224, 90, 71, 0.25);
+    transition: all 0.2s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.final-report-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(224, 90, 71, 0.35);
+}
+
+.final-report-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

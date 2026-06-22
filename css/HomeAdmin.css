@@ -1,36 +1,24 @@
 .home-admin-container {
         display: flex;
         min-height: 100vh;
-        background-color: #ffffff; /* Deep navy from design */
+        background: linear-gradient(to bottom, #94A3B8 0%, #F8FAFC 100%);
         color: rgb(0, 0, 0);
         font-family: 'Segoe UI', sans-serif;
         overflow: hidden;
         position: relative;
     }
 
-    /* Background circles from the image */
-    .home-admin-container::before {
-        content: "";
-        position: absolute;
-        width: 300px;
-        height: 300px;
-        background: rgba(255, 255, 255, 0.708);
-        border-radius: 50%;
-        top: -50px;
-        left: 20%;
-        z-index: 0;
-    }
 
     /* Sidebar Styling */
     .admin-sidebar {
         width: 250px;
-        background-color: #ececec;
+        background-color: #1B263B;
+        border-right: #1e293b;
         padding: 40px 20px;
         display: flex;
         flex-direction: column;
         gap: 40px;
         z-index: 1;
-        border-top-right-radius: 30px;
     }
 
     .search-bar {

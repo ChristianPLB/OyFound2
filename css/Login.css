@@ -1,160 +1,408 @@
-.form-wrapper {
-    background-color: #cbcbcb;
+/* =========================================
+   LOGIN PAGE
+========================================= */
+
+.login-container {
     width: 100%;
-    max-width: 500px;
-    text-align: center;
-    padding: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    border-radius: 30px;
-    
-    /* Apply slide up to the main card */
-    animation: slideUp 0.6s ease-out forwards;
-}
+    min-height: 100%;
 
-/* Header Text */
-.form-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 5px;
-}
-
-.user-highlight {
-    color: #ff00ee;
-}
-
-.login-link {
-    color: #ff0088;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-/* Grid for Inputs */
-.input-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 15px;
-    margin: 30px 0;
-}
-
-/* Custom Select Styling */
-.select-field {
-    appearance: none; /* Removes default browser arrow */
-    background-position: right 1rem center;
-    background-size: 1em;
-    cursor: pointer;
-}
-
-/* Style for the options list */
-.select-field option {
-    background-color: #adadad00;
-    color: rgb(0, 0, 0);
-}
-
-/* Base Input Style */
-.input-field {
-    background: transparent;
-    border: 4px solid rgb(0, 0, 0);
-    border-radius: 12px;
-    padding: 15px;
-    color: rgb(0, 0, 0);
-    outline: none;
-    transition: all 0.3s ease;
-}
-
-.input-field::placeholder {
-    color: rgba(0, 0, 0, 0.566);
-}
-
-/* Unique Active/Focus state from image */
-.input-field.active {
-    background-color: #5d5f83;
-    border-color: #8b8eb7;
-}
-
-.input-field.active::placeholder {
-    color: white;
-}
-
-/* Divider with text */
-.divider-container {
     display: flex;
     align-items: center;
-    margin: 30px 0;
-}
-
-.line {
-    flex: 1;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.divider-text {
-    padding: 0 15px;
-    color: #003705;
-    font-size: 0.9rem;
-}
-
-/* Social Icons Section */
-.social-icons {
-    display: flex;
     justify-content: center;
-    gap: 25px;
-    margin-bottom: 40px;
+
+    padding: 35px;
+
+    background: #ffffff;
+
+    font-family: "Poppins", sans-serif;
 }
 
-.social-icon {
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-}
 
-/* Sign Up Button */
-.signup-btn {
-    background-color: #ff00ccf9;
-    color: white;
+/* =========================================
+   FORM WRAPPER
+========================================= */
+
+.login-container .form-wrapper {
+    width: 100%;
+    max-width: 390px;
+
+    padding: 20px;
+
+    background: transparent;
+
     border: none;
-    border-radius: 18px;
-    padding: 16px 60px;
-    font-size: 1.4rem;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    /* Retained transition for the hover transform */
-    transition: transform 0.2s ease, background-color 0.2s ease; 
+
+    box-shadow: none;
 }
 
-.signup-btn:hover {
-    background-color: #b300ff;
-    transform: translateY(-2px); /* Slightly moves up on hover */
+
+/* =========================================
+   TITLE
+========================================= */
+
+.login-container .form-title {
+    margin: 0;
+
+    text-align: center;
+
+    color: #1b263b;
+
+    font-size: 30px;
+
+    font-weight: 800;
+
+    line-height: 1.2;
 }
 
-/* 2. Login Specific Layout */
-.login-form-container {
+
+.login-container .form-subtitle {
+    margin:
+        8px
+        0
+        28px;
+
+    text-align: center;
+
+    color: #415a77;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   ERROR / SUCCESS
+========================================= */
+
+.login-container .error-message,
+.login-container .success-message {
+    padding: 10px 14px;
+
+    margin-bottom: 15px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+
+    text-align: center;
+}
+
+
+.login-container .error-message {
+    background: #fee2e2;
+
+    color: #b91c1c;
+}
+
+
+.login-container .success-message {
+    background: #dcfce7;
+
+    color: #166534;
+}
+
+
+/* =========================================
+   INPUT GROUP
+========================================= */
+
+.login-container .input-group {
+    width: 100%;
+
+    margin-bottom: 18px;
+}
+
+
+.login-container .input-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #1b263b;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.login-container .input-group input {
+    width: 100%;
+
+    height: 48px;
+
+    box-sizing: border-box;
+
+    padding:
+        0
+        15px;
+
+    border: 1px solid #d5dbe3;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #f8fafc;
+
+    color: #1b263b;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.login-container .input-group input::placeholder {
+    color: #94a3b8;
+}
+
+
+.login-container .input-group input:focus {
+    border-color: #778da9;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(119, 141, 169, 0.15);
+}
+
+
+/* =========================================
+   FORGOT PASSWORD
+========================================= */
+
+.forgot-password-wrapper {
     display: flex;
-    flex-direction: column;
+
+    justify-content: flex-end;
+
+    margin-top: -4px;
+
+    margin-bottom: 18px;
+}
+
+
+.forgot-password {
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #415a77;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+
+.forgot-password:hover {
+    color: #1b263b;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   SIGN IN BUTTON
+========================================= */
+
+.login-container .login-btn {
+    width: 100%;
+
+    height: 48px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1b263b,
+            #415a77
+        );
+
+    color: #ffffff;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+.login-container .login-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(27, 38, 59, 0.25);
+}
+
+
+.login-container .login-btn:active {
+    transform: scale(0.98);
+}
+
+
+.login-container .login-btn:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================
+   GOOGLE
+========================================= */
+
+.google-login-container {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
     align-items: center;
-    width: 100%;
-    max-width: 400px;
-    margin: 40px auto;
+
+    margin-top: 18px;
 }
 
-.input-group {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-bottom: 10px;
-}
 
-.forgot-password-link {
-    width: 100%;
-    text-align: right;
-    color: #000000;
-    font-size: 0.9rem;
-    margin-bottom: 30px;
+.google-login-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    padding:
+        8px
+        12px;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #1b263b;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
     cursor: pointer;
+
+    border-radius: 7px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
 }
 
-.login-btn-wide {
-    padding: 12px 80px !important;
+
+.google-login-button:hover {
+    background: rgba(65, 90, 119, 0.08);
+}
+
+
+.google-login-button:active {
+    transform: scale(0.96);
+}
+
+
+.google-login-button:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+
+.google-login-icon {
+    width: 22px;
+    height: 22px;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+.google-login-button span {
+    line-height: 1;
+}
+
+
+/* =========================================
+   REGISTER LINK
+========================================= */
+
+.register-link {
+    margin-top: 15px;
+
+    text-align: center;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+.register-link a {
+    color: #415a77;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+.register-link a:hover {
+    color: #1b263b;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .login-container {
+        padding: 25px 20px;
+    }
+
+    .login-container .form-title {
+        font-size: 26px;
+    }
+
+    .login-container .form-subtitle {
+        margin-bottom: 22px;
+    }
 }
