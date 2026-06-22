@@ -114,10 +114,6 @@ function Profile({ setRole }) { // Receive setRole here
                         <label>Email address</label>
                         <p>{userData.email}</p>
                     </div>
-                    <div className="info-group">
-                        <label>Phone</label>
-                        <p>{userData.phone}</p>
-                    </div>
                 </div>
             </div>
         </div>

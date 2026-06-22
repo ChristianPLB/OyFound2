@@ -52,9 +52,7 @@ function NavStudent({ setRole }) {
 
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav me-auto">
-                        <li className="nav-item">
-                            <Link to="/studentdashboard" className="nav-link">Dashboard</Link>
-                        </li>
+                        
                         <li className="nav-item position-relative">
                             <Link to="/studentmessages" className="nav-link">
                                 Messages
