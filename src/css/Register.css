@@ -1,0 +1,228 @@
+/* Redesigned register.css
+   Matches the exact layout structure of the wireframe using your premium slate color theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;600;700;800&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+.register-container{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:30px;
+font-family:'Poppins',sans-serif;
+background:
+radial-gradient(circle at top left,#415A77 0%,transparent 35%),
+radial-gradient(circle at bottom right,#778DA9 0%,transparent 35%),
+linear-gradient(135deg,#1B263B,#415A77,#778DA9);
+overflow:hidden;
+}
+
+.register-form{
+width:100%;
+max-width:650px; /* Widened slightly to fit multi-column inputs cleanly */
+padding:40px;
+background:rgba(224,225,221,.90);
+backdrop-filter:blur(24px);
+border-radius:30px;
+border:1px solid rgba(255,255,255,.35);
+position:relative;
+overflow:hidden;
+box-shadow:0 20px 55px rgba(0,0,0,.18);
+animation:slideUp .7s ease forwards;
+}
+
+.register-form::before{
+content:"";
+position:absolute;
+inset:0;
+padding:2px;
+border-radius:30px;
+background:linear-gradient(135deg,#778DA9,transparent,#415A77);
+-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+-webkit-mask-composite:xor;
+pointer-events:none;
+}
+
+.form-title{text-align:center;font-size:32px;font-weight:800;color:#1B263B;letter-spacing:1px;margin-bottom:4px;}
+.form-subtitle{text-align:center;color:#415A77;font-size:14px;margin-bottom:25px;}
+
+/* Sub-navigation style from your wireframe ("Already have an account? Login") */
+.form-redirect-text {
+    text-align: center;
+    font-size: 14px;
+    color: #415A77;
+    margin-bottom: 25px;
+}
+.form-redirect-link {
+    color: #1B263B;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.form-redirect-link:hover {
+    text-decoration: underline;
+}
+
+.login-form-container{display:flex;flex-direction:column;width:100%;}
+
+/* WIREFRAME STRUCTURAL GRID: Arranges fields responsive & dynamic side-by-side */
+.input-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+/* Sizing spans for grid slots */
+.span-2 { grid-column: span 2; }
+.span-3 { grid-column: span 3; }
+.span-4 { grid-column: span 4; }
+.span-6 { grid-column: span 6; }
+
+/* REINFORCED STYLING FOR INPUTS AND SELECT DROPDOWNS */
+input.input-field, 
+select.input-field {
+    width:100% !important;
+    height:54px !important;
+    padding:0 20px !important;
+    border:none !important;
+    outline:none !important;
+    appearance:none !important;
+    -webkit-appearance:none !important;
+    background:#FFFFFF !important;
+    color:#1B263B !important;
+    font-size:14px !important;
+    font-family:'Poppins',sans-serif !important;
+    border-radius:14px !important;
+    box-shadow: inset 0 0 0 2px rgba(119,141,169,.25) !important;
+    transition:.35s ease;
+}
+
+/* Specific styling for select arrow positioning */
+select.input-field {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23415A77' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 18px center !important;
+    background-size: 16px !important;
+    cursor: pointer;
+}
+
+.input-field::placeholder{color:#778DA9;}
+input.input-field:hover, select.input-field:hover{box-shadow:inset 0 0 0 2px #415A77,0 6px 14px rgba(65,90,119,.1) !important;}
+input.input-field:focus, select.input-field:focus{
+outline:none !important;
+transform:translateY(-1px);
+box-shadow:inset 0 0 0 2px #1B263B,0 8px 18px rgba(65,90,119,.15) !important;
+}
+
+/* Submit Action Button */
+.signup-btn{
+width:100%;
+height:54px;
+border:none;
+border-radius:50px;
+background:linear-gradient(135deg,#1B263B,#415A77);
+color:#E0E1DD;
+font-size:16px;
+font-weight:700;
+font-family:'Poppins',sans-serif;
+cursor:pointer;
+transition:.35s;
+box-shadow:0 12px 24px rgba(27,38,59,.2);
+margin-top:5px;
+}
+.signup-btn:hover{
+background:linear-gradient(135deg,#415A77,#778DA9);
+transform:translateY(-3px);
+box-shadow:0 15px 30px rgba(27,38,59,.25);
+}
+.signup-btn:active,.google-btn:active{transform:scale(.98);}
+
+.error-message,.success-message{
+padding:12px;border-radius:12px;margin-bottom:18px;font-size:14px;
+}
+.error-message{background:#ffe6e6;color:#d11a2a;}
+.success-message{background:#e6fff0;color:#0f7d39;}
+
+.divider-container{display:flex;align-items:center;margin:24px 0 18px;}
+.line{flex:1;height:2px;background:linear-gradient(to right,transparent,#778DA9,transparent);}
+.divider-text{padding:0 16px;color:#778DA9;font-size:13px;font-weight:600;}
+
+/* Full width clean single container option for the Google asset */
+.social-buttons{display:flex; width:100%;}
+.social-buttons button{
+width:100%; height:52px; border:none; border-radius:50px;
+display:flex;justify-content:center;align-items:center;gap:12px;
+font-family:'Poppins',sans-serif;font-size:15px;font-weight:600;
+cursor:pointer;transition:.35s;
+background:#1B263B; color:#E0E1DD;
+box-shadow:0 10px 20px rgba(27,38,59,.1);
+}
+.social-buttons button:hover{
+transform:translateY(-3px);
+background:#415A77;
+box-shadow:0 15px 25px rgba(27,38,59,.18);
+}
+
+.social-icon-img {
+    height: 18px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+@keyframes slideUp{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* Responsive collapse rules for smaller displays */
+@media(max-width:768px){
+.register-container{padding:20px;}
+.register-form{padding:30px 20px;}
+.input-grid-layout { grid-template-columns: 1fr; gap: 14px; }
+.span-2, .span-3, .span-4, .span-6 { grid-column: span 1; }
+}
+
+/* Inline Horizontal Flexbox Container */
+.birthdate-horizontal-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+}
+
+.birthdate-inline-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #4b5563;
+    white-space: nowrap;
+}
+
+/* 3-Dropdown Grid directly beside the label */
+.birthdate-horizontal-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.modern-date-select {
+    height: 48px;
+    padding: 0 16px;
+    font-size: 15px;
+    border-radius: 24px; /* Matches rounded pill style */
+    border: 1px solid #d1d5db;
+    background-color: #ffffff;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.modern-date-select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}

@@ -1,0 +1,172 @@
+/* ==========================================================================
+   Messages Interface Theme (Updated with Visible Gradient & Animations)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Messages Interface: White Transparent (Frosted Glass) Theme
+   ========================================================================== */
+
+.messages-container {
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(to bottom, #94A3B8 0%, #F8FAFC 100%);
+    background-attachment: fixed;
+    color: #1B263B;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    padding: 16px;
+    gap: 16px;
+}
+
+/* --- SIDEBAR & CHAT AREA: Frosted Glass Effect --- */
+.messages-sidebar, 
+.chat-main-area {
+    background: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 24px;
+}
+
+/* --- HEADERS & INPUT DOCKS --- */
+.sidebar-header, 
+.chat-header, 
+.chat-input-section {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.input-box-container {
+    background: rgba(255, 255, 255, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+}
+
+/* ==========================================================================
+   MESSAGE BUBBLES & ANIMATIONS
+   ========================================================================== */
+
+.msg-bubble {
+    /* Set transform origin to bottom right so it scales out from the sent point */
+    transform-origin: bottom right;
+}
+
+/* Sent message styling + Messenger-style pop animation */
+.msg-bubble.sent {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    color: #1B263B !important;
+    /* Runs animation when inserted into the page */
+    animation: messengerPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Received message styling + gentle slide-in animation */
+.msg-bubble.received {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    color: #1B263B !important;
+    transform-origin: bottom left;
+    animation: messengerReceive 0.25s ease-out forwards;
+}
+
+/* Keyframes for sent message pop-in */
+@keyframes messengerPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.6) translateY(12px);
+    }
+    70% {
+        transform: scale(1.03) translateY(-2px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Keyframes for received message entry */
+@keyframes messengerReceive {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(8px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Ensure text remains dark */
+.convo-info strong, 
+.chat-header-user h4, 
+textarea {
+    color: #1B263B !important;
+}
+
+/* --- SIDEBAR --- */
+.messages-sidebar {
+    width: 320px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar-header {
+    padding: 16px;
+    background-color: rgba(255, 255, 255, 0.4); 
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.convo-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 16px;
+    transition: all 0.2s ease;
+}
+
+/* --- MAIN TALK HUB AREA --- */
+.chat-main-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.chat-header {
+    padding: 20px 24px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* --- ENTRY PANEL DOCK --- */
+.chat-input-section {
+    padding: 20px 24px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.input-box-container {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}

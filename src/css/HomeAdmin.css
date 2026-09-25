@@ -1,0 +1,199 @@
+.home-admin-container {
+        display: flex;
+        min-height: 100vh;
+        background: linear-gradient(to bottom, #94A3B8 0%, #F8FAFC 100%);
+        color: rgb(0, 0, 0);
+        font-family: 'Segoe UI', sans-serif;
+        overflow: hidden;
+        position: relative;
+    }
+
+
+    /* Sidebar Styling */
+    .admin-sidebar {
+        width: 250px;
+        background-color: #1B263B;
+        border-right: #1e293b;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        z-index: 1;
+    }
+
+    .search-bar {
+        width: 100%;
+        background-color: #ffffff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+        color: #334155;
+    }
+
+    .report-section h2 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    .report-btn-link, .ai-matches-btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+    }
+
+    .report-btn-link {
+        background-color: #cbd5e1;
+        color: #1e293b;
+    }
+
+    .ai-matches-btn {
+        background-color: #1e293b;
+        color: white;
+        border: 1px solid #334155;
+    }
+
+    /* Main Content Styling */
+    .admin-main-content {
+        flex-grow: 1;
+        padding: 40px;
+        z-index: 1;
+    }
+
+    .content-header h1 {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+
+    /* Map Card Styling */
+    .heatmap-card {
+        width: 350px;
+        background-color: #000000a8;
+        padding: 20px;
+        border-radius: 20px;
+        text-align: center;
+    }
+
+    .heatmap-card h3 {
+        margin-bottom: 15px;
+    }
+
+    .map-placeholder {
+        background-color: #add8e6;
+        height: 200px;
+        border-radius: 15px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .map-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .location-btn {
+        background-color: #cbd5e1;
+        border: none;
+        padding: 10px 30px;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    /* Dark background for the modal */
+.image-modal-overlay {
+    position: fixed;
+    top: 50px;
+    left: 20rem;
+    width: 30%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: right;
+    z-index: 1000;
+    cursor: zoom-out;
+}
+
+/* Modal image sizing */
+.modal-content img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+/* Close button style */
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Hover effect on report cards */
+.report-img-preview:hover {
+    filter: brightness(0.9);
+    transition: 0.3s;
+}
+
+.match-comparison-card {
+    display: flex;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    align-items: center;
+    border: 1px solid #eee;
+}
+
+.match-side {
+    flex: 1;
+    padding: 10px;
+}
+
+.match-vs {
+    width: 120px;
+    text-align: center;
+    font-weight: bold;
+    color: #666;
+}
+
+.match-score {
+    font-size: 0.75rem;
+    background: #e1f5fe;
+    color: #0288d1;
+    padding: 4px 8px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+}
+
+.vs-line {
+    height: 2px;
+    background: #ddd;
+    width: 100%;
+}
+
+.badge {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.lost-side .badge { background: #ffebee; color: #c62828; }
+.found-side .badge { background: #e8f5e9; color: #2e7d32; }
