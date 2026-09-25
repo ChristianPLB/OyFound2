@@ -1,0 +1,307 @@
+/* ================================
+   OYFOUND STUDENT / PARENT NAVBAR
+   ================================ */
+
+.navbar {
+    width: 260px;
+    height: 100vh;
+    background: #1B263B;
+    color: #E0E1DD;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* ================================
+   BRAND / LOGO
+   ================================ */
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 24px 22px;
+    border-bottom: 1px solid rgba(224, 225, 221, 0.12);
+}
+
+.navbar-logo img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.navbar-logo h2 {
+    margin: 0;
+    color: #E0E1DD;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+/* ================================
+   SEARCH
+   ================================ */
+
+.navbar-search {
+    padding: 18px 16px;
+}
+
+.navbar-search input {
+    width: 100%;
+    height: 40px;
+    padding: 0 13px;
+    box-sizing: border-box;
+
+    background: #415A77;
+    color: #E0E1DD;
+
+    border: 1px solid rgba(224, 225, 221, 0.15);
+    border-radius: 9px;
+
+    outline: none;
+    font-size: 14px;
+}
+
+.navbar-search input::placeholder {
+    color: rgba(224, 225, 221, 0.65);
+}
+
+.navbar-search input:focus {
+    border-color: #778DA9;
+    background: #465f7d;
+}
+
+/* ================================
+   NAVIGATION
+   ================================ */
+
+.navbar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px 12px;
+}
+
+.navbar-menu a,
+.navbar-menu button {
+    width: 100%;
+    min-height: 46px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 0 15px;
+    box-sizing: border-box;
+
+    border: none;
+    border-radius: 9px;
+
+    background: transparent;
+    color: #E0E1DD;
+
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.navbar-menu a:hover,
+.navbar-menu button:hover {
+    background: #415A77;
+    color: #ffffff;
+}
+
+.navbar-menu a.active {
+    background: #778DA9;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* ================================
+   NAV ICONS
+   ================================ */
+
+.navbar-icon {
+    width: 21px;
+    height: 21px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+.navbar-icon img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.navbar-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* ================================
+   SECTION TITLE
+   ================================ */
+
+.navbar-section-title {
+    padding: 18px 16px 7px;
+
+    color: #778DA9;
+
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ================================
+   BOTTOM AREA
+   ================================ */
+
+.navbar-bottom {
+    margin-top: auto;
+    padding: 12px;
+
+    border-top: 1px solid rgba(224, 225, 221, 0.12);
+}
+
+/* ================================
+   PROFILE LINK
+   ================================ */
+
+.navbar-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 11px 13px;
+
+    color: #E0E1DD;
+    text-decoration: none;
+
+    border-radius: 9px;
+
+    transition: background 0.2s ease;
+}
+
+.navbar-profile:hover {
+    background: #415A77;
+}
+
+.navbar-profile-avatar {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #778DA9;
+    color: #ffffff;
+
+    font-weight: 700;
+}
+
+.navbar-profile-info {
+    min-width: 0;
+}
+
+.navbar-profile-name {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.navbar-profile-role {
+    margin: 3px 0 0;
+
+    color: #778DA9;
+
+    font-size: 12px;
+}
+
+/* ================================
+   SCROLLBAR
+   ================================ */
+
+.navbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.navbar::-webkit-scrollbar-track {
+    background: #1B263B;
+}
+
+.navbar::-webkit-scrollbar-thumb {
+    background: #415A77;
+    border-radius: 10px;
+}
+
+.navbar::-webkit-scrollbar-thumb:hover {
+    background: #778DA9;
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 900px) {
+    .navbar {
+        width: 230px;
+    }
+
+    .navbar-logo {
+        padding: 20px 18px;
+    }
+
+    .navbar-menu {
+        padding: 8px 10px;
+    }
+
+    .navbar-menu a,
+    .navbar-menu button {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 650px) {
+    .navbar {
+        width: 210px;
+    }
+
+    .navbar-logo h2 {
+        font-size: 19px;
+    }
+
+    .navbar-menu a,
+    .navbar-menu button {
+        padding: 0 11px;
+        gap: 10px;
+    }
+}

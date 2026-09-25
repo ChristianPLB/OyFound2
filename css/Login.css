@@ -1,0 +1,408 @@
+/* =========================================
+   LOGIN PAGE
+========================================= */
+
+.login-container {
+    width: 100%;
+    min-height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 35px;
+
+    background: #ffffff;
+
+    font-family: "Poppins", sans-serif;
+}
+
+
+/* =========================================
+   FORM WRAPPER
+========================================= */
+
+.login-container .form-wrapper {
+    width: 100%;
+    max-width: 390px;
+
+    padding: 20px;
+
+    background: transparent;
+
+    border: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.login-container .form-title {
+    margin: 0;
+
+    text-align: center;
+
+    color: #1b263b;
+
+    font-size: 30px;
+
+    font-weight: 800;
+
+    line-height: 1.2;
+}
+
+
+.login-container .form-subtitle {
+    margin:
+        8px
+        0
+        28px;
+
+    text-align: center;
+
+    color: #415a77;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   ERROR / SUCCESS
+========================================= */
+
+.login-container .error-message,
+.login-container .success-message {
+    padding: 10px 14px;
+
+    margin-bottom: 15px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+
+    text-align: center;
+}
+
+
+.login-container .error-message {
+    background: #fee2e2;
+
+    color: #b91c1c;
+}
+
+
+.login-container .success-message {
+    background: #dcfce7;
+
+    color: #166534;
+}
+
+
+/* =========================================
+   INPUT GROUP
+========================================= */
+
+.login-container .input-group {
+    width: 100%;
+
+    margin-bottom: 18px;
+}
+
+
+.login-container .input-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #1b263b;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.login-container .input-group input {
+    width: 100%;
+
+    height: 48px;
+
+    box-sizing: border-box;
+
+    padding:
+        0
+        15px;
+
+    border: 1px solid #d5dbe3;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #f8fafc;
+
+    color: #1b263b;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.login-container .input-group input::placeholder {
+    color: #94a3b8;
+}
+
+
+.login-container .input-group input:focus {
+    border-color: #778da9;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(119, 141, 169, 0.15);
+}
+
+
+/* =========================================
+   FORGOT PASSWORD
+========================================= */
+
+.forgot-password-wrapper {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: -4px;
+
+    margin-bottom: 18px;
+}
+
+
+.forgot-password {
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #415a77;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+
+.forgot-password:hover {
+    color: #1b263b;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   SIGN IN BUTTON
+========================================= */
+
+.login-container .login-btn {
+    width: 100%;
+
+    height: 48px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1b263b,
+            #415a77
+        );
+
+    color: #ffffff;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+.login-container .login-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(27, 38, 59, 0.25);
+}
+
+
+.login-container .login-btn:active {
+    transform: scale(0.98);
+}
+
+
+.login-container .login-btn:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================
+   GOOGLE
+========================================= */
+
+.google-login-container {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-top: 18px;
+}
+
+
+.google-login-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    padding:
+        8px
+        12px;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #1b263b;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    border-radius: 7px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.google-login-button:hover {
+    background: rgba(65, 90, 119, 0.08);
+}
+
+
+.google-login-button:active {
+    transform: scale(0.96);
+}
+
+
+.google-login-button:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+
+.google-login-icon {
+    width: 22px;
+    height: 22px;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+.google-login-button span {
+    line-height: 1;
+}
+
+
+/* =========================================
+   REGISTER LINK
+========================================= */
+
+.register-link {
+    margin-top: 15px;
+
+    text-align: center;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+.register-link a {
+    color: #415a77;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+.register-link a:hover {
+    color: #1b263b;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .login-container {
+        padding: 25px 20px;
+    }
+
+    .login-container .form-title {
+        font-size: 26px;
+    }
+
+    .login-container .form-subtitle {
+        margin-bottom: 22px;
+    }
+}

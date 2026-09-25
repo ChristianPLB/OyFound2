@@ -1,0 +1,317 @@
+/* ==========================================
+   PAGE CANVAS & GRADIENT BACKGROUND
+   ========================================== */
+.report-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 24px;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, #415A77 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #778DA9 0%, transparent 35%),
+        linear-gradient(135deg, #1B263B, #415A77, #778DA9);
+    color: #1e293b;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+
+.report-item-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+/* ==========================================
+   THE FLOATING PANEL
+   ========================================== */
+.report-item-box {
+    background-color: rgba(255, 255, 255, 0.85); 
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 28px;
+    box-shadow: 0 12px 30px rgba(119, 141, 169, 0.15);
+    width: 100%;
+    max-width: 900px; 
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.report-item-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    transition: opacity 0.3s ease;
+}
+
+.report-item-form.form-faded {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Header Text Styling */
+.form-title {
+    margin-top: 0;
+    margin-bottom: 4px;
+    font-size: 2.2rem;
+    color: #334155;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.form-subtitle {
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   INPUTS, LABELS & DROPDOWNS
+   ========================================== */
+.form-section-text {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.input-block, .input-block-small {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.input-block label, .input-block-small label {
+    font-weight: 600;
+    color: #475569;
+    font-size: 0.9rem;
+    padding-left: 6px;
+    letter-spacing: 0.2px;
+}
+
+/* Base input field, Date input, & Select dropdown styling */
+.input-block input[type="text"],
+.input-block input[type="file"],
+.input-block select,
+.input-block-small input,
+.description-box textarea {
+    background-color: rgba(241, 245, 249, 0.7);
+    border: 1px solid rgba(203, 213, 225, 0.8);
+    border-radius: 16px;
+    padding: 14px 20px;
+    color: #1e293b;
+    outline: none;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Toledo Barangay dropdown custom arrow */
+.input-block select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22293%22%20height%3D%22293%22%3E%3Cpath%20fill%3D%22%23475569%22%20d%3D%22M236%20129l-89%2089-89-89h178z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 18px center;
+    background-size: 12px;
+    cursor: pointer;
+}
+
+/* Focus state with soft blue glow */
+.input-block input[type="text"]:focus,
+.input-block select:focus,
+.input-block-small input:focus,
+.description-box textarea:focus {
+    background-color: #ffffff;
+    border-color: #778da9;
+    box-shadow: 0 0 0 4px rgba(119, 141, 169, 0.15);
+}
+
+.description-box textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ==========================================
+   MAP LOCATOR CONTAINER
+   ========================================== */
+.map-locator-container {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(203, 213, 225, 0.8);
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
+    z-index: 1;
+}
+
+/* ==========================================
+   STATUS SELECTORS & BUTTONS
+   ========================================== */
+.inline-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.status-selector {
+    display: flex;
+    flex-direction: column;
+}
+
+.status-selector .toggle-btn {
+    padding: 12px 28px;
+    border: 1px solid rgba(203, 213, 225, 0.8);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    background-color: rgba(241, 245, 249, 0.7);
+    color: #64748b;
+    transition: all 0.2s ease;
+}
+
+.status-selector .lost-btn {
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    border-right: none;
+}
+
+.status-selector .found-btn {
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+.toggle-btn.selected {
+    background-color: #415a77 !important;
+    color: #ffffff !important;
+    border-color: #415a77 !important;
+}
+
+.toggle-btn:hover:not(.selected) {
+    background-color: rgba(226, 232, 240, 0.9);
+    color: #1e293b;
+}
+
+/* ==========================================
+   GRID FOR DESCRIPTION & IMAGE UPLOAD
+   ========================================== */
+.flex-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .flex-grid {
+        grid-template-columns: 1fr;
+    }
+    .inline-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* ==========================================
+   CARD PANELS (For Listings/Grids)
+   ========================================== */
+.reports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    padding: 12px;
+}
+
+.report-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(148, 163, 184, 0.12);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.report-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(119, 141, 169, 0.2);
+}
+
+.report-image-container {
+    width: 100%;
+    height: 190px;
+    background: #e2e8f0;
+}
+
+.report-img-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.report-details {
+    padding: 20px;
+}
+
+/* ==========================================
+   LOADING OVERLAY & SPINNER
+   ========================================== */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 28px;
+    z-index: 10;
+}
+
+.spinner {
+    width: 44px;
+    height: 44px;
+    border: 4px solid rgba(119, 141, 169, 0.2);
+    border-left-color: #415a77;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+    margin-bottom: 12px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ==========================================
+   SUBMIT BUTTON
+   ========================================== */
+.final-report-btn {
+    background: linear-gradient(135deg, #e05a47, #c93b2b);
+    color: white;
+    padding: 16px 48px;
+    border: none;
+    border-radius: 18px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(224, 90, 71, 0.25);
+    transition: all 0.2s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.final-report-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(224, 90, 71, 0.35);
+}
+
+.final-report-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
